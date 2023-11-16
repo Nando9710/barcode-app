@@ -1,165 +1,214 @@
+// @use '@angular/material' as mat;
+
+// @include mat.core();
+
+// $primary-dark: (
+//   50 : #e7e6ec,
+//   100 : #c3c1d0,
+//   200 : #9b98b1,
+//   300 : #726e91,
+//   400 : #544f7a,
+//   500 : #363062,
+//   600 : #302b5a,
+//   700 : #292450,
+//   800 : #221e46,
+//   900 : #161334,
+//   A100 : #7e74ff,
+//   A200 : #4e41ff,
+//   A400 : #1f0eff,
+//   A700 : #1100f3,
+//   contrast: (50 : #000000,
+//     100 : #000000,
+//     200 : #000000,
+//     300 : #ffffff,
+//     400 : #ffffff,
+//     500 : #ffffff,
+//     600 : #ffffff,
+//     700 : #ffffff,
+//     800 : #ffffff,
+//     900 : #ffffff,
+//     A100 : #000000,
+//     A200 : #ffffff,
+//     A400 : #ffffff,
+//     A700 : #ffffff,
+//   )
+// );
+
+// $accent-dark: (
+//   50 : #e8ebf0,
+//   100 : #c7ccda,
+//   200 : #a1aac2,
+//   300 : #7b88aa,
+//   400 : #5f6f97,
+//   500 : #435585,
+//   600 : #3d4e7d,
+//   700 : #344472,
+//   800 : #2c3b68,
+//   900 : #1e2a55,
+//   A100 : #96acff,
+//   A200 : #6384ff,
+//   A400 : #305bff,
+//   A700 : #1647ff,
+//   contrast: (50 : #000000,
+//     100 : #000000,
+//     200 : #000000,
+//     300 : #000000,
+//     400 : #ffffff,
+//     500 : #ffffff,
+//     600 : #ffffff,
+//     700 : #ffffff,
+//     800 : #ffffff,
+//     900 : #ffffff,
+//     A100 : #000000,
+//     A200 : #000000,
+//     A400 : #ffffff,
+//     A700 : #ffffff,
+//   )
+// );
+
+// $primary-light: (
+//   50 : #fefcf8,
+//   100 : #fcf8ee,
+//   200 : #faf4e3,
+//   300 : #f8efd8,
+//   400 : #f7ebcf,
+//   500 : #f5e8c7,
+//   600 : #f4e5c1,
+//   700 : #f2e2ba,
+//   800 : #f0deb3,
+//   900 : #eed8a6,
+//   A100 : #ffffff,
+//   A200 : #ffffff,
+//   A400 : #ffffff,
+//   A700 : #ffffff,
+//   contrast: (50 : #000000,
+//     100 : #000000,
+//     200 : #000000,
+//     300 : #000000,
+//     400 : #000000,
+//     500 : #000000,
+//     600 : #000000,
+//     700 : #000000,
+//     800 : #000000,
+//     900 : #000000,
+//     A100 : #000000,
+//     A200 : #000000,
+//     A400 : #000000,
+//     A700 : #000000,
+//   )
+// );
+
+// $accent-light: (
+//   50 : #f0f2f6,
+//   100 : #d9dde9,
+//   200 : #c0c7da,
+//   300 : #a7b1cb,
+//   400 : #94a0bf,
+//   500 : #818fb4,
+//   600 : #7987ad,
+//   700 : #6e7ca4,
+//   800 : #64729c,
+//   900 : #51608c,
+//   A100 : #f0f3ff,
+//   A200 : #bdcdff,
+//   A400 : #8aa6ff,
+//   A700 : #7093ff,
+//   contrast: (50 : #000000,
+//     100 : #000000,
+//     200 : #000000,
+//     300 : #000000,
+//     400 : #000000,
+//     500 : #000000,
+//     600 : #000000,
+//     700 : #ffffff,
+//     800 : #ffffff,
+//     900 : #ffffff,
+//     A100 : #000000,
+//     A200 : #000000,
+//     A400 : #000000,
+//     A700 : #000000,
+//   )
+// );
+
+// $app-light-theme: mat.define-light-theme((color: (primary: mat.define-palette($primary-light),
+//         accent: mat.define-palette($accent-light),
+//         warn: mat.define-palette(mat.$red-palette)),
+//       typography: mat.define-typography-config()));
+
+// $app-dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette($primary-dark),
+//         accent: mat.define-palette($accent-dark),
+//         warn: mat.define-palette(mat.$red-palette)),
+//       typography: mat.define-typography-config()));
+
+
+
+// @include mat.core-theme($app-dark-theme);
+
+// @media (prefers-color-scheme: light) {
+//   @include mat.core-theme($app-light-theme);
+//   @include mat.core-color($app-light-theme);
+//   @include mat.all-component-colors($app-light-theme);
+// }
+
+// .light-theme {
+//   @include mat.core-theme($app-light-theme);
+//   @include mat.core-color($app-light-theme);
+//   @include mat.all-component-colors($app-light-theme);
+// }
+
+// .dark-theme {
+//   @include mat.core-theme($app-dark-theme);
+//   @include mat.core-color($app-dark-theme);
+//   @include mat.all-component-colors($app-dark-theme);
+// }
+
+// // $main-color: mat.get-color-from-palette($primary, 500);
+
+
+// @use '@angular/material' as mat;
+
+// @include mat.core();
+
+// $barcode-app-primary: mat.define-palette(mat.$indigo-palette, 500);
+// $barcode-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// $barcode-app-warn: mat.define-palette(mat.$red-palette);
+
+// $barcode-app-theme: mat.define-light-theme((color: (primary: mat.define-palette(mat.$indigo-palette, 500),
+//         accent: mat.define-palette(mat.$indigo-palette, 200),
+//         warn: mat.define-palette(mat.$red-palette),
+//       )));
+
+// @include mat.all-component-themes($barcode-app-theme);
+
 @use '@angular/material' as mat;
 
 @include mat.core();
 
-$primary-dark: (
-  50 : #e7e6ec,
-  100 : #c3c1d0,
-  200 : #9b98b1,
-  300 : #726e91,
-  400 : #544f7a,
-  500 : #363062,
-  600 : #302b5a,
-  700 : #292450,
-  800 : #221e46,
-  900 : #161334,
-  A100 : #7e74ff,
-  A200 : #4e41ff,
-  A400 : #1f0eff,
-  A700 : #1100f3,
-  contrast: (50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #ffffff,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #ffffff,
-    A400 : #ffffff,
-    A700 : #ffffff,
-  )
-);
+// Define a dark theme
+$dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette(mat.$indigo-palette, 500),
+        accent: mat.define-palette(mat.$grey-palette, 100),
+      ),
+      // Only include `typography` and `density` in the default dark theme.
+      typography: mat.define-typography-config(),
+      density: 0,
+    ));
 
-$accent-dark: (
-  50 : #e8ebf0,
-  100 : #c7ccda,
-  200 : #a1aac2,
-  300 : #7b88aa,
-  400 : #5f6f97,
-  500 : #435585,
-  600 : #3d4e7d,
-  700 : #344472,
-  800 : #2c3b68,
-  900 : #1e2a55,
-  A100 : #96acff,
-  A200 : #6384ff,
-  A400 : #305bff,
-  A700 : #1647ff,
-  contrast: (50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #ffffff,
-    A700 : #ffffff,
-  )
-);
+// Define a light theme
+$light-theme: mat.define-light-theme((color: (primary: mat.define-palette(mat.$grey-palette, 200),
+        accent: mat.define-palette(mat.$indigo-palette, 400),
+      ),
+    ));
 
-$primary-light: (
-  50 : #fefcf8,
-  100 : #fcf8ee,
-  200 : #faf4e3,
-  300 : #f8efd8,
-  400 : #f7ebcf,
-  500 : #f5e8c7,
-  600 : #f4e5c1,
-  700 : #f2e2ba,
-  800 : #f0deb3,
-  900 : #eed8a6,
-  A100 : #ffffff,
-  A200 : #ffffff,
-  A400 : #ffffff,
-  A700 : #ffffff,
-  contrast: (50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #000000,
-    500 : #000000,
-    600 : #000000,
-    700 : #000000,
-    800 : #000000,
-    900 : #000000,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #000000,
-    A700 : #000000,
-  )
-);
+// Apply the dark theme by default
+// @include mat.core-theme($dark-theme);
+// @include mat.button-theme($dark-theme);
+@include mat.all-component-themes($dark-theme);
 
-$accent-light: (
-  50 : #f0f2f6,
-  100 : #d9dde9,
-  200 : #c0c7da,
-  300 : #a7b1cb,
-  400 : #94a0bf,
-  500 : #818fb4,
-  600 : #7987ad,
-  700 : #6e7ca4,
-  800 : #64729c,
-  900 : #51608c,
-  A100 : #f0f3ff,
-  A200 : #bdcdff,
-  A400 : #8aa6ff,
-  A700 : #7093ff,
-  contrast: (50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #000000,
-    500 : #000000,
-    600 : #000000,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #000000,
-    A700 : #000000,
-  )
-);
-
-$app-light-theme: mat.define-light-theme((color: (primary: mat.define-palette($primary-light),
-        accent: mat.define-palette($accent-light),
-        warn: mat.define-palette(mat.$red-palette)),
-      typography: mat.define-typography-config()));
-
-$app-dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette($primary-dark),
-        accent: mat.define-palette($accent-dark),
-        warn: mat.define-palette(mat.$red-palette)),
-      typography: mat.define-typography-config()));
-
-
-
-@include mat.core-theme($app-dark-theme);
-
-@media (prefers-color-scheme: light) {
-  @include mat.core-theme($app-light-theme);
-  @include mat.core-color($app-light-theme);
-  @include mat.all-component-colors($app-light-theme);
-}
-
-.light-theme {
-  @include mat.core-theme($app-light-theme);
-  @include mat.core-color($app-light-theme);
-  @include mat.all-component-colors($app-light-theme);
-}
-
-.dark-theme {
-  @include mat.core-theme($app-dark-theme);
-  @include mat.core-color($app-dark-theme);
-  @include mat.all-component-colors($app-dark-theme);
-}
-
-// $main-color: mat.get-color-from-palette($primary, 500);
+// Apply the light theme only when the user prefers light themes.
+// @media (prefers-color-scheme: light) {
+//   // Use the `-color` mixins to only apply color styles without reapplying the same
+//   // typography and density styles.
+//   @include mat.core-color($light-theme);
+//   @include mat.button-color($light-theme);
+// }

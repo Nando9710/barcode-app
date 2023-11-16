@@ -20,8 +20,9 @@ export class RequestBarcodeApiService {
   public getProducts(productQuery?: ProductParameterData[]): Observable<BarcodeProductsData> {
     let params = new HttpParams();
 
+
     productQuery?.forEach(productData => {
-      params = params.append(productData.code, productData.value)
+      if (productData.value) params = params.append(productData.code, productData.value)
     })
 
     params = params.append('formatted', 'y')

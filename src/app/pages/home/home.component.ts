@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RequestBarcodeApiService } from '../../core/services/request-barcode-api/request-barcode-api.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { UpperCasePipe } from '@angular/common';
+import { NgFor, UpperCasePipe } from '@angular/common';
 import { ProductOptionSearch, ProductParameterData } from '../../core/interfaces/product.interface';
 
 
@@ -21,7 +22,9 @@ import { ProductOptionSearch, ProductParameterData } from '../../core/interfaces
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
-    UpperCasePipe
+    MatMenuModule,
+    UpperCasePipe,
+    NgFor
   ],
   providers: [RequestBarcodeApiService],
   templateUrl: './home.component.html',
@@ -30,7 +33,7 @@ import { ProductOptionSearch, ProductParameterData } from '../../core/interfaces
 export class HomeComponent {
   constructor(
     private barcodeService: RequestBarcodeApiService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) { }
 
 
@@ -45,32 +48,73 @@ export class HomeComponent {
     { code: 'geo', name: 'País' },
   ]
 
+  public filterOptions: ProductOptionSearch[] = [
+    { code: 'mpn', name: 'MPN' },
+    { code: 'category', name: 'Categoría' },
+    { code: 'manufacturer', name: 'Fabricante' },
+    { code: 'brand', name: 'Marca' },
+    { code: 'geo', name: 'País' },
+  ]
+
   productForm: FormGroup = this.fb.group({
     code: ['title'],
-    value: [''],
+    value: ['iphone'],
     filters: this.fb.array([])
   })
 
+  @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
+
+  public getProductFiltersArray(): FormArray {
+    return this.productForm.controls['filters'] as FormArray
+  }
   private subscribeToTitleChange() {
     this.productForm.controls['value'].valueChanges.pipe(debounceTime(500)).subscribe({
-      next: (strValue) => {
-        console.log(strValue);
-        this.searchProduct(strValue)
+      next: () => {
+        this.searchProduct()
+      }
+    })
+
+    this.productForm.controls['filters'].valueChanges.pipe(debounceTime(500)).subscribe({
+      next: () => {
+        this.searchProduct()
       }
     })
   }
 
-  private searchProduct(value: string) {
-    const product: ProductParameterData[] = [{
-      code: this.productForm.controls['code'].value,
-      value: this.productForm.controls['value'].value
-    }]
-    this.barcodeService.getProducts(product).subscribe(({ products }) => {
-      console.log(products);
-    })
+  public addFilterForm() {
+    const productFilters = this.getProductFiltersArray();
+    productFilters.push(
+      this.fb.group({
+        code: ['brand'],
+        value: ['']
+      })
+    )
+  }
+
+  public deleteFilterForm(i: number) {
+    const productFilters = this.getProductFiltersArray();
+    productFilters.removeAt(i)
+  }
+
+  private searchProduct() {
+    const product: ProductParameterData[] = [
+      {
+        code: this.productForm.controls['code'].value,
+        value: this.productForm.controls['value'].value,
+      },
+      ...this.productForm.controls['filters'].value
+    ]
+    // this.barcodeService.getProducts(product).subscribe(({ products }) => {
+    //   console.log(products);
+    // })
+  }
+
+  public closeMenu() {
+    this.menuTrigger.closeMenu()
   }
 
   ngOnInit(): void {
-    this.subscribeToTitleChange()
+    this.subscribeToTitleChange();
+    this.addFilterForm();
   }
 }

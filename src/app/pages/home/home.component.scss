@@ -1,30 +1,10 @@
-::ng-deep {
-  mat-form-field {
-    .mdc-text-field--filled {
-      background-color: transparent !important;
-    }
-
-    .mdc-text-field__input {
-      color: white !important;
-    }
-  }
-
-  .mat-mdc-select-panel {
-    background-color: transparent !important;
-  }
-
-  mat-label,
-  mat-select {
-    color: white !important;
-  }
-}
-
 section.search {
+
   form {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     gap: 3rem;
 
 
@@ -34,6 +14,50 @@ section.search {
 
     mat-form-field.search {
       width: 50%;
+    }
+  }
+}
+
+::ng-deep {
+  .mat-mdc-menu-panel.mat-menu {
+    max-width: none;
+    /* Define el ancho máximo del mat-menu */
+  }
+
+  .mat-mdc-menu-content {
+    .menu-filter {
+      padding: 1rem;
+
+      .header-filters {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+
+        h3 {
+          margin: 0;
+        }
+      }
+
+      .filters {
+        width: 500px;
+
+        .filter {
+          width: 100%;
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          gap: 1rem;
+
+          mat-form-field.select {
+            width: 30%;
+          }
+
+          mat-form-field.search {
+            width: 60%;
+          }
+        }
+      }
     }
   }
 }
