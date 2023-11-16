@@ -1,0 +1,39 @@
+::ng-deep {
+  mat-form-field {
+    .mdc-text-field--filled {
+      background-color: transparent !important;
+    }
+
+    .mdc-text-field__input {
+      color: white !important;
+    }
+  }
+
+  .mat-mdc-select-panel {
+    background-color: transparent !important;
+  }
+
+  mat-label,
+  mat-select {
+    color: white !important;
+  }
+}
+
+section.search {
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+
+    mat-form-field.select {
+      width: 20%;
+    }
+
+    mat-form-field.search {
+      width: 50%;
+    }
+  }
+}

@@ -1,1 +1,22 @@
 <h1>Home</h1>
+<section class="search">
+  <form [formGroup]="productForm">
+    <mat-form-field class="select" color="accent">
+      <mat-label>Buscar Por...</mat-label>
+      <mat-select formControlName="code">
+        @for (option of searchOptions; track option.code) {
+          <mat-option [value]="option.code">{{ option.name | uppercase }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="search" color="accent">
+      <mat-label>Escriba el producto</mat-label>
+      <input matInput type="text" formControlName="value" >
+    </mat-form-field>
+  
+    <button mat-icon-button color="accent">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+</section>
