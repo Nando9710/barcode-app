@@ -75,7 +75,7 @@ export const products: Product[] = [
         tax: [],
         link: "https://rd.bizrate.com/rd?t=https://www.groupon.com/deals/gg-cm-soft-protective-cover-with-marble-print-for-iphone-and-samsung-models?deal_option=f31dc838-4857-4d80-91a6-d9c9a7ee05fa&tsToken%",
         item_group_id: "",
-        availability: "",
+        availability: "in stock",
         condition: "",
         shipping: [],
         last_update: "2021-06-22 05:28:12"
@@ -90,7 +90,7 @@ export const products: Product[] = [
         tax: [],
         link: "http://www.technooutlet.com/drmw8344.html",
         item_group_id: "",
-        availability: "",
+        availability: "in stock",
         condition: "new",
         shipping: [
           {

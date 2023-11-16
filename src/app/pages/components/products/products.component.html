@@ -1,16 +1,32 @@
 <section>
   <div class="products">
-    @if (productsData()) {
-      <h2>Productos</h2>
-      <div class="products-container">
-        @for (product of productsData(); track product?.model) {
-          <app-product-card (click)="goToProductDetails(product)" [product]="product"/>
-        } @empty {
-          <h2>No ha encontrado productos</h2>
-        }
-      </div>
+    @if (!loadingProducts()) {
+      @if (productsData()) {
+        <div class="products-container">
+          @for (product of productsData(); track product?.model) {
+            <app-product-card (click)="goToProductDetails(product)" [product]="product"/>
+          } @empty {
+            <h2>No ha encontrado productos</h2>
+          }
+        </div>
+      } @else {
+        <h1>Escriba el producto que desea buscar</h1>
+      }
     } @else {
-      <h1>Buscando...</h1> 
+      <ng-container [ngTemplateOutlet]="loading" ></ng-container>
     }
   </div>
 </section>
+
+<ng-template #loading>
+  @for (item of [1, 2]; track $index) {
+    <div class="skeleton">
+      <div style="width: 25%;">
+        <ngx-skeleton-loader [theme]="{height: '15rem', width: '100%', 'margin-right': '2rem',  background: 'rgba(128, 128, 128, 0.5)'}" />
+      </div>
+      <div style="width: 60%;">
+        <ngx-skeleton-loader count="5" [theme]="{height: '2rem', width: '100%', background: 'rgba(128, 128, 128, 0.5)'}" />
+      </div>
+    </div>
+  }
+</ng-template>

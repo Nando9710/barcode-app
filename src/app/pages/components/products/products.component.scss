@@ -11,6 +11,14 @@ section {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      margin-top: 2rem;
     }
+  }
+
+  .skeleton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 }

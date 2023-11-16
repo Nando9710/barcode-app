@@ -59,8 +59,9 @@ export class HomeComponent {
     { code: 'geo', name: 'País' },
   ]
 
-  // public products: WritableSignal<Product[] | null> = signal(null)
-  public products: WritableSignal<Product[]> = signal(products)
+  public loading: WritableSignal<boolean> = signal(false);
+  public products: WritableSignal<Product[] | null> = signal(null)
+  @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
 
   productForm: FormGroup = this.fb.group({
     code: ['title'],
@@ -68,7 +69,6 @@ export class HomeComponent {
     filters: this.fb.array([])
   })
 
-  @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
 
   public getProductFiltersArray(): FormArray {
     return this.productForm.controls['filters'] as FormArray
@@ -103,6 +103,7 @@ export class HomeComponent {
   }
 
   private searchProduct() {
+    this.loading.set(true);
     const product: ProductParameterData[] = [
       {
         code: this.productForm.controls['code'].value,
@@ -110,8 +111,14 @@ export class HomeComponent {
       },
       ...this.productForm.controls['filters'].value
     ]
+
+    setTimeout(() => {
+      this.loading.set(false);
+      this.products.set(products)
+    }, 5000);
     // this.barcodeService.getProducts(product).subscribe(({ products }) => {
     //   console.log(products);
+    //   this.loaging.set(true);
     // })
   }
 
