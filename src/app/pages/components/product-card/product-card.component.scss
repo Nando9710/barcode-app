@@ -1,3 +1,5 @@
+@use '/src/assets/scss/theme/theme.scss' as *;
+
 mat-card {
   display: flex;
   flex-direction: row;
@@ -42,6 +44,7 @@ mat-card {
           h4 {
             font-size: 20px;
             text-decoration: line-through;
+            color: $warn-color
           }
 
           h3 {

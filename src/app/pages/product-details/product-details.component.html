@@ -1,1 +1,74 @@
-<p>product-details works!</p>
+<section>
+  <div class="details-container">
+    <div class="image-container">
+      <img [src]="productData()?.images?.[0]" alt="product-image">
+    </div>
+
+    <div class="data-container">
+      <h2>{{productData()?.title}}</h2>
+      @if (productData()?.category) { <small>{{ productData()?.category }}</small>}
+      <div class="icon-price">
+        @if (productData()?.asin) {
+          <img (click)="goToAmazon(productData()?.asin)" src="../../../../assets/images/logos/amazon-logo.svg" alt="amazon-link" height="100px">
+        }
+        @if (!(productData()?.stores?.length === 0)) {
+          <div class="prices">
+            <h5>
+              {{  productData()?.stores | minPrice: 'sale_price' }}
+            </h5>
+            <h4>
+              {{  productData()?.stores | minPrice: 'price' }}
+            </h4>
+          </div>
+        }
+      </div>
+
+      @if (productData()?.brand) {<p> <strong>Marca</strong>: {{ productData()?.brand }} </p>}
+      @if (productData()?.manufacturer) {<p> <strong>Fabricante</strong>: {{ productData()?.manufacturer }} </p>}
+      @if (productData()?.model) {<p> <strong>Modelo</strong>: {{ productData()?.model }} </p>}
+      @if (productData()?.weight) {<p> <strong>Peso</strong>: {{ productData()?.weight }} </p>}
+      @if (productData()?.color) {<p> <strong>Color</strong>: {{ productData()?.color }} </p>}
+      @if (productData()?.size) {<p> <strong>Tamaño</strong>: {{ productData()?.size }} </p>}
+      @if (productData()?.width) {<p> <strong>Ancho</strong>: {{ productData()?.width }} </p>}
+      @if (productData()?.height) {<p> <strong>Alto</strong>: {{ productData()?.height }} </p>}
+      @if (productData()?.barcode_number) {<p> <strong>Barcode</strong>: {{ productData()?.barcode_number }} </p>}
+      @if (productData()?.mpn) {<p> <strong>MPN</strong>: {{ productData()?.mpn }} </p>}
+      @if (productData()?.asin) {<p> <strong>ASIN</strong>: {{ productData()?.asin }} </p>}
+      @if (productData()?.ingredients) {<p> <strong>Ingredientes</strong>: {{ productData()?.ingredients }} </p>}
+      @if (productData()?.nutrition_facts) {<p> <strong>ValoresNutricionales</strong>: {{ productData()?.nutrition_facts }} </p>}
+      @if (productData()?.gender) {<p> <strong>Género</strong>: {{ productData()?.gender }} </p>}
+      @if (productData()?.material) {<p> <strong>Material</strong>: {{ productData()?.material }} </p>}
+      @if (productData()?.pattern) {<p> <strong>Patrón</strong>: {{ productData()?.pattern }} </p>}
+      @if (productData()?.format) {<p> <strong>Fromato</strong>: {{ productData()?.format }} </p>}
+
+      @if (productData()?.description) {
+        <h2>Descripción:</h2>
+        <p> {{ productData()?.description }} </p>
+      }
+      @if (productData()?.features && !(productData()?.features?.length === 0)) {
+        <h3>Características:</h3>
+        <p> {{ productData()?.features }} </p>
+      }
+      
+      @if (productData()?.stores && !(productData()?.stores?.length === 0)) {
+        <h2>Dónde encontrarlo:</h2>
+        @for (store of productData()?.stores; track $index) {
+          <div class="store-details">
+            @if (store?.condition) {<mat-chip-option highlighted selectable="false" color="accent">{{store?.condition}}</mat-chip-option>}
+            @if (store?.availability) {<mat-chip-option highlighted selectable="false" color="accent">{{store?.availability}}</mat-chip-option>}
+            <div class="price-name">
+              <h3 class="clamp-1"> {{ store.name }} </h3>
+              <div class="prices">
+                @if (store?.sale_price) {<h5>{{  store?.sale_price }} {{ store.currency }}</h5>}
+                <h4>{{  store?.price }} {{ store.currency }}</h4>
+              </div>
+              <button mat-raised-button color="accent">Ir a comprar</button>
+            </div>
+          </div>
+          <mat-divider />
+        }
+      }
+    </div>
+  </div>
+
+</section>

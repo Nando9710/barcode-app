@@ -1,0 +1,96 @@
+@use '/src/assets/scss/theme/theme.scss' as *;
+
+section {
+  display: flex;
+  justify-content: center;
+
+  .details-container {
+    width: 80%;
+    display: flex;
+    justify-content: start;
+    gap: 2rem;
+
+    .image-container {
+      width: 50%;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .data-container {
+      width: 50%;
+      max-height: 80vh;
+      overflow-y: scroll;
+
+      .icon-price {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 3rem;
+
+        img {
+          cursor: pointer;
+        }
+      }
+
+      h2,
+      h3,
+      h4 {
+        margin: 0;
+      }
+
+      .prices {
+        // width: 30%;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        text-align: end;
+        align-items: end;
+
+        h5,
+        h4 {
+          margin: 0;
+        }
+
+        h5 {
+          font-size: 20px;
+          text-decoration: line-through;
+          color: $warn-color
+        }
+
+        h4 {
+          font-size: 25px;
+        }
+      }
+
+      .store-details {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        mat-chip-option {
+          margin-right: 1rem;
+        }
+
+        .price-name {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          h3 {
+            width: 40%;
+          }
+
+          .prices {
+            width: 30%;
+          }
+
+          .buttom {
+            width: 25%;
+          }
+        }
+      }
+    }
+  }
+}

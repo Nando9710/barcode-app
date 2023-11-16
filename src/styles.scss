@@ -27,3 +27,7 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}

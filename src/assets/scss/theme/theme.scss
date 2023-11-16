@@ -195,8 +195,8 @@ $dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette(mat.$ind
     ));
 
 // Define a light theme
-$light-theme: mat.define-light-theme((color: (primary: mat.define-palette(mat.$grey-palette, 200),
-        accent: mat.define-palette(mat.$indigo-palette, 400),
+$light-theme: mat.define-light-theme((color: (primary: mat.define-palette(mat.$grey-palette, 400),
+        accent: mat.define-palette(mat.$indigo-palette, 500),
       ),
     ));
 
@@ -212,3 +212,5 @@ $light-theme: mat.define-light-theme((color: (primary: mat.define-palette(mat.$g
 //   @include mat.core-color($light-theme);
 //   @include mat.button-color($light-theme);
 // }
+
+$warn-color: mat.get-color-from-palette(mat.$red-palette, 500);
