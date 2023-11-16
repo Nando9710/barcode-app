@@ -17,11 +17,9 @@ export class ProductCardComponent {
   public productData: WritableSignal<Product | null> = signal(null)
   @Input({ required: true }) set product(data: Product) {
     if (data) this.productData.set(data)
-    console.log(data);
   }
 
   public goToAmazon(asin: string | undefined) {
-    console.log(asin)
     if (asin) window.open(`https://www.amazon.com/s?k=${asin}`, '_blank');
   }
 }

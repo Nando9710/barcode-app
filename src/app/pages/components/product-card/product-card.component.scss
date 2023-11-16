@@ -1,6 +1,7 @@
 mat-card {
   display: flex;
   flex-direction: row;
+  cursor: pointer;
 
   img.product-image {
     width: 20%;
