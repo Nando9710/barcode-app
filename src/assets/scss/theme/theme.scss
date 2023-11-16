@@ -133,33 +133,33 @@ $accent-light: (
 $app-light-theme: mat.define-light-theme((color: (primary: mat.define-palette($primary-light),
         accent: mat.define-palette($accent-light),
         warn: mat.define-palette(mat.$red-palette)),
-      typography: mat.define-typography-level($font-family: 'Poppins',
-        $font-size: 16px)));
+      typography: mat.define-typography-config()));
 
 $app-dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette($primary-dark),
         accent: mat.define-palette($accent-dark),
         warn: mat.define-palette(mat.$red-palette)),
-      typography: mat.define-typography-level($font-family: 'Poppins',
-        $font-size: 16px)));
+      typography: mat.define-typography-config()));
 
 
 
-@include mat.core-theme($dark-theme);
-@include mat.button-theme($dark-theme);
+@include mat.core-theme($app-dark-theme);
 
 @media (prefers-color-scheme: light) {
-  @include mat.core-color($light-theme);
+  @include mat.core-theme($app-light-theme);
+  @include mat.core-color($app-light-theme);
   @include mat.all-component-colors($app-light-theme);
 }
 
 .light-theme {
-  @include mat.core-color($light-theme);
+  @include mat.core-theme($app-light-theme);
+  @include mat.core-color($app-light-theme);
   @include mat.all-component-colors($app-light-theme);
 }
 
 .dark-theme {
-  @include mat.core-color($light-theme);
-  @include mat.all-component-colors($app-light-theme);
+  @include mat.core-theme($app-dark-theme);
+  @include mat.core-color($app-dark-theme);
+  @include mat.all-component-colors($app-dark-theme);
 }
 
-$main-color: mat.get-color-from-palette($primary, 500);
+// $main-color: mat.get-color-from-palette($primary, 500);
