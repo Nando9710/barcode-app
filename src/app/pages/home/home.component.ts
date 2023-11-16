@@ -29,7 +29,6 @@ import { ProductsComponent } from '../components/products/products.component';
     UpperCasePipe,
     ProductsComponent
   ],
-  providers: [RequestBarcodeApiService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -129,12 +128,12 @@ export class HomeComponent {
     this.barcodeService.getProducts(product).subscribe({
       next: ({ products }) => {
         console.log(products);
-        this.products.set(products);
+        this.barcodeService.setProductsData(products)
         this.loading.set(false);
       },
       error: (error) => {
         console.log(error);
-        this.products.set(null);
+        this.barcodeService.setProductsData([])
         this.loading.set(false);
       }
     })
@@ -144,8 +143,18 @@ export class HomeComponent {
     this.menuTrigger.closeMenu()
   }
 
+  private productsDataObserver() {
+    this.barcodeService.products$.subscribe({
+      next: (products) => {
+        console.log(products);
+        this.products.set(products)
+      }
+    })
+  }
+
   ngOnInit(): void {
     this.createProductForm();
     this.addFilterForm();
+    this.productsDataObserver();
   }
 }

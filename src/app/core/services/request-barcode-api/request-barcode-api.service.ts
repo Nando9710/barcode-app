@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BarcodeProductsData } from '../../interfaces/barcode-products.interface';
-import { Observable } from 'rxjs';
+import { Injectable, WritableSignal, signal } from '@angular/core';
+import { BarcodeProductsData, Product } from '../../interfaces/barcode-products.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import { ProductParameterData } from '../../interfaces/product.interface';
 
@@ -16,6 +16,13 @@ export class RequestBarcodeApiService {
   private API_KEY: string = environment.apiKey;
 
   private BARCODE_PRODUCTS_API_URL: string = `${this.CORS_ANYWARE_PROXY}${this.BARCODE_API_URL}/products`;
+
+  public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+
+  public setProductsData(data: Product[]) {
+    console.log(data);
+    this.products$.next(data);
+  }
 
   public getProducts(productQuery?: ProductParameterData[]): Observable<BarcodeProductsData> {
     let params = new HttpParams();
