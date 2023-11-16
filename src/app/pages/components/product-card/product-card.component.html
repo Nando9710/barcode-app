@@ -1,0 +1,38 @@
+<mat-card>
+  <img class="product-image" mat-card-image [src]="productData()?.images?.[0]" alt="product-image">
+  <mat-card-content>
+    <div class="product-description">
+      <h3 class="clamp-1">{{ productData()?.title }}</h3>
+      <p class="clamp-3">
+        {{ productData()?.description }}
+      </p>
+      <div class="description-footer">
+        @if (productData()?.stores?.length) {
+          <div class="prices">
+            <h4>
+              {{  productData()?.stores | minPrice: 'sale_price' }}
+            </h4>
+            <h3>
+              {{  productData()?.stores | minPrice: 'price' }}
+            </h3>
+          </div>
+        }
+        @if (productData()?.asin) {
+          <img (click)="goToAmazon(productData()?.asin)" src="../../../../assets/images/logos/amazon-logo.svg" alt="amazon-link" height="60px">
+        }
+      </div>
+    </div>
+    <mat-divider vertical />
+
+    <div class="product-details">
+      @if (productData()?.brand) {<p> <strong>Marca</strong>: {{ productData()?.brand }} </p>}
+      @if (productData()?.manufacturer) {<p> <strong>Fabricante</strong>: {{ productData()?.manufacturer }} </p>}
+      @if (productData()?.model) {<p> <strong>Modelo</strong>: {{ productData()?.model }} </p>}
+      @if (productData()?.weight) {<p> <strong>Peso</strong>: {{ productData()?.weight }} </p>}
+      @if (productData()?.color) {<p> <strong>Color</strong>: {{ productData()?.color }} </p>}
+      @if (productData()?.size) {<p> <strong>Tamaño</strong>: {{ productData()?.size }} </p>}
+      @if (productData()?.width) {<p> <strong>Ancho</strong>: {{ productData()?.width }} </p>}
+      @if (productData()?.height) {<p> <strong>Alto</strong>: {{ productData()?.height }} </p>}
+    </div>
+  </mat-card-content>
+</mat-card>

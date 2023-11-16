@@ -1,4 +1,3 @@
-<h1>Home</h1>
 <section class="search">
   <form [formGroup]="productForm">
     <mat-form-field class="select" color="accent">
@@ -52,4 +51,7 @@
       </div>
     </mat-menu>
   </form>
+
 </section>
+
+<app-products [products]="products()" />

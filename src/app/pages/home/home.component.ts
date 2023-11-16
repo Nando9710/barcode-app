@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, WritableSignal, signal } from '@angular/core';
 import { RequestBarcodeApiService } from '../../core/services/request-barcode-api/request-barcode-api.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,9 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular
 import { debounceTime } from 'rxjs';
 import { NgFor, UpperCasePipe } from '@angular/common';
 import { ProductOptionSearch, ProductParameterData } from '../../core/interfaces/product.interface';
+import { Product } from '../../core/interfaces/barcode-products.interface';
+import { products } from '../../core/const/products';
+import { ProductsComponent } from '../components/products/products.component';
 
 
 @Component({
@@ -24,7 +27,7 @@ import { ProductOptionSearch, ProductParameterData } from '../../core/interfaces
     ReactiveFormsModule,
     MatMenuModule,
     UpperCasePipe,
-    NgFor
+    ProductsComponent
   ],
   providers: [RequestBarcodeApiService],
   templateUrl: './home.component.html',
@@ -55,6 +58,9 @@ export class HomeComponent {
     { code: 'brand', name: 'Marca' },
     { code: 'geo', name: 'País' },
   ]
+
+  // public products: WritableSignal<Product[] | null> = signal(null)
+  public products: WritableSignal<Product[]> = signal(products)
 
   productForm: FormGroup = this.fb.group({
     code: ['title'],

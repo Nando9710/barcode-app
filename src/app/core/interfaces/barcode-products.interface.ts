@@ -32,7 +32,7 @@ export interface Product {
   description: string;
   features: any[];
   images: string[];
-  last_update: Date;
+  last_update: Date | string;
   stores: Store[];
   reviews: any[];
 }
@@ -50,5 +50,5 @@ export interface Store {
   availability: string;
   condition: string;
   shipping: any[];
-  last_update: Date;
+  last_update: Date | string;
 }

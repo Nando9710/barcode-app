@@ -1,0 +1,16 @@
+<section>
+  <div class="products">
+    @if (productsData()) {
+      <h2>Productos</h2>
+      <div class="products-container">
+        @for (product of productsData(); track product?.model) {
+          <app-product-card [product]="product"/>
+        } @empty {
+          <h2>No ha encontrado productos</h2>
+        }
+      </div>
+    } @else {
+      <h1>Buscando...</h1> 
+    }
+  </div>
+</section>
