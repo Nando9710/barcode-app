@@ -63,17 +63,25 @@ export class HomeComponent {
   public products: WritableSignal<Product[] | null> = signal(null)
   @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
 
-  productForm: FormGroup = this.fb.group({
-    code: ['title'],
-    value: ['iphone'],
-    filters: this.fb.array([])
-  })
+  productForm!: FormGroup
+
+  private createProductForm() {
+    this.productForm = this.fb.group({
+      code: ['title'],
+      value: ['iphone'],
+      filters: this.fb.array([])
+    });
+
+    setTimeout(() => {
+      this.subscribeToFormChange();
+    }, 0);
+  }
 
 
   public getProductFiltersArray(): FormArray {
     return this.productForm.controls['filters'] as FormArray
   }
-  private subscribeToTitleChange() {
+  private subscribeToFormChange() {
     this.productForm.controls['value'].valueChanges.pipe(debounceTime(500)).subscribe({
       next: () => {
         this.searchProduct()
@@ -112,14 +120,24 @@ export class HomeComponent {
       ...this.productForm.controls['filters'].value
     ]
 
-    setTimeout(() => {
-      this.loading.set(false);
-      this.products.set(products)
-    }, 5000);
-    // this.barcodeService.getProducts(product).subscribe(({ products }) => {
-    //   console.log(products);
-    //   this.loaging.set(true);
-    // })
+    console.log(product);
+
+    // setTimeout(() => {
+    //   this.loading.set(false);
+    //   this.products.set(products)
+    // }, 5000);
+    this.barcodeService.getProducts(product).subscribe({
+      next: ({ products }) => {
+        console.log(products);
+        this.products.set(products);
+        this.loading.set(false);
+      },
+      error: (error) => {
+        console.log(error);
+        this.products.set(null);
+        this.loading.set(false);
+      }
+    })
   }
 
   public closeMenu() {
@@ -127,7 +145,7 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
-    this.subscribeToTitleChange();
+    this.createProductForm();
     this.addFilterForm();
   }
 }
