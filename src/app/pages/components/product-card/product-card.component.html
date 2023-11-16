@@ -7,16 +7,14 @@
         {{ productData()?.description }}
       </p>
       <div class="description-footer">
-        @if (productData()?.stores?.length) {
-          <div class="prices">
-            <h4>
-              {{  productData()?.stores | minPrice: 'sale_price' }}
-            </h4>
-            <h3>
-              {{  productData()?.stores | minPrice: 'price' }}
-            </h3>
-          </div>
-        }
+        <div class="prices">
+          <h4>
+            {{  productData()?.stores | minPrice: 'sale_price' }}
+          </h4>
+          <h3>
+            {{  productData()?.stores | minPrice: 'price' }}
+          </h3>
+        </div>
         @if (productData()?.asin) {
           <img (click)="goToAmazon(productData()?.asin)" src="../../../../assets/images/logos/amazon-logo.svg" alt="amazon-link" height="60px">
         }

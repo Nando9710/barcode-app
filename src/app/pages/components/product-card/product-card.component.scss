@@ -6,8 +6,8 @@ mat-card {
   cursor: pointer;
 
   img.product-image {
-    width: 20%;
-    height: auto;
+    width: 25%;
+    height: 260px;
     object-fit: cover;
   }
 
@@ -29,7 +29,7 @@ mat-card {
         align-items: center;
 
         .prices {
-          width: 30%;
+          width: 35%;
           display: flex;
           justify-content: start;
           flex-direction: column;
