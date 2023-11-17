@@ -1,5 +1,5 @@
 import { Component, Input, WritableSignal, signal } from '@angular/core';
-import { Product } from '../../../core/interfaces/barcode-products.interface';
+import { Product } from '../../../../core/interfaces/barcode-products.interface';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { Router } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';

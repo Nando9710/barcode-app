@@ -1,8 +1,8 @@
 import { Component, Input, WritableSignal, signal } from '@angular/core';
-import { Product } from '../../../core/interfaces/barcode-products.interface';
+import { Product } from '../../../../core/interfaces/barcode-products.interface';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { MinPricePipe } from '../../../core/pipes/min-price.pipe';
+import { MinPricePipe } from '../../../../core/pipes/min-price.pipe';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({

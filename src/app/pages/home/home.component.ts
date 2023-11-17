@@ -2,7 +2,7 @@ import { Component, WritableSignal, signal } from '@angular/core';
 import { RequestBarcodeApiService } from '../../core/services/request-barcode-api/request-barcode-api.service';
 import { ProductOptionSearch, ProductParameterData } from '../../core/interfaces/product.interface';
 import { Product } from '../../core/interfaces/barcode-products.interface';
-import { ProductsComponent } from '../components/products/products.component';
+import { ProductsComponent } from './components/products/products.component';
 import { SearchFormFilterComponent } from './components/search-form-filter/search-form-filter.component';
 import { filterOptions, searchOptions } from './utils/consts/options.const';
 import { ShowToastrService } from '../../core/services/show-toastr.service';
