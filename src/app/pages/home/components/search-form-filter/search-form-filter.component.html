@@ -1,55 +1,55 @@
 <form [formGroup]="productForm">
-    <mat-form-field class="select" color="accent">
-      <mat-label>Buscar Por...</mat-label>
-      <mat-select formControlName="code">
-        @for (option of searchOptions; track option.code) {
-          <mat-option [value]="option.code">{{ option.name | uppercase }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+  <mat-form-field class="select" color="accent">
+    <mat-label>Buscar Por...</mat-label>
+    <mat-select formControlName="code">
+      @for (option of searchOptions; track option.code) {
+        <mat-option [value]="option.code">{{ option.name | uppercase }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 
-    <mat-form-field class="search" color="accent">
-      <mat-label>Escriba el producto</mat-label>
-      <input matInput type="text" formControlName="value" >
-    </mat-form-field>
-  
-    <button mat-icon-button color="accent" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
-      <mat-icon>filter_list</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu" xPosition="before" class="mat-menu">
-      <div class="menu-filter" (click)="$event.stopPropagation();">
-        <div class="header-filters">
-          <h3>Filtros</h3>
-          <button mat-icon-button color="accent" (click)="addFilterForm()">
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
-        <div class="filters" formArrayName="filters">
-          @for (filterForm of getProductFiltersArray().controls; track filterForm.value; let i = $index) {
-            <div class="filter" [formGroupName]="i">
-              <mat-form-field class="select" color="accent">
-                <mat-label>Filtrar Por...</mat-label>
-                <mat-select formControlName="code">
-                  @for (option of filterOptions; track option.code) {
-                    <mat-option [value]="option.code">{{ option.name | uppercase }}</mat-option>
-                  }
-                </mat-select>
-              </mat-form-field>
-    
-              <mat-form-field class="search" color="accent">
-                <mat-label>Escriba el producto</mat-label>
-                <input matInput type="text" formControlName="value" >
-              </mat-form-field>
+  <mat-form-field class="search" color="accent">
+    <mat-label>Escriba el producto</mat-label>
+    <input matInput type="text" formControlName="value" >
+  </mat-form-field>
 
-              <button mat-icon-button color="accent" (click)="deleteFilterForm(i)">
-                <mat-icon color="warn">close</mat-icon>
-              </button>
-            </div>
-          }
-        </div>
-        <div class="button-filter">
-          <button mat-raised-button color="accent" (click)="filter()">Filtrar</button>
-        </div>
+  <button mat-icon-button color="accent" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+    <mat-icon>filter_list</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" xPosition="before" class="mat-menu">
+    <div class="menu-filter" (click)="$event.stopPropagation();">
+      <div class="header-filters">
+        <h3>Filtros</h3>
+        <button mat-icon-button color="accent" (click)="addFilterForm()">
+          <mat-icon>add</mat-icon>
+        </button>
       </div>
-    </mat-menu>
-  </form>
+      <div class="filters" formArrayName="filters">
+        @for (filterForm of getProductFiltersArray().controls; track filterForm.value; let i = $index) {
+          <div class="filter" [formGroupName]="i">
+            <mat-form-field class="select" color="accent">
+              <mat-label>Filtrar Por...</mat-label>
+              <mat-select formControlName="code">
+                @for (option of filterOptions; track option.code) {
+                  <mat-option [value]="option.code">{{ option.name | uppercase }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field class="search" color="accent">
+              <mat-label>Escriba el producto</mat-label>
+              <input matInput type="text" formControlName="value" >
+            </mat-form-field>
+
+            <button mat-icon-button color="accent" (click)="deleteFilterForm(i)">
+              <mat-icon color="warn">close</mat-icon>
+            </button>
+          </div>
+        }
+      </div>
+      <div class="button-filter">
+        <button mat-raised-button color="accent" (click)="filter()">Filtrar</button>
+      </div>
+    </div>
+  </mat-menu>
+</form>
