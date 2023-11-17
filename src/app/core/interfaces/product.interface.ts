@@ -1,5 +1,7 @@
+import { OptionCode } from "../enums/option-code.enum";
+
 export interface ProductOptionSearch {
-  code: string;
+  code: OptionCode;
   name: string;
 }
 
