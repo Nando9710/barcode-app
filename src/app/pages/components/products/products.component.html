@@ -6,7 +6,7 @@
           @for (product of productsData(); track product?.model) {
             <app-product-card (click)="goToProductDetails(product)" [product]="product"/>
           } @empty {
-            <h2>No ha encontrado productos</h2>
+            <h2>No han encontrado productos</h2>
           }
         </div>
       } @else {

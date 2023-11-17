@@ -58,6 +58,12 @@ section.search {
           }
         }
       }
+
+      .button-filter {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+      }
     }
   }
 }

@@ -67,7 +67,7 @@ export class HomeComponent {
   private createProductForm() {
     this.productForm = this.fb.group({
       code: ['title'],
-      value: ['iphone'],
+      value: [''],
       filters: this.fb.array([])
     });
 
@@ -109,6 +109,11 @@ export class HomeComponent {
     productFilters.removeAt(i)
   }
 
+  public filter() {
+    this.searchProduct();
+    this.menuTrigger.closeMenu();
+  }
+
   private searchProduct() {
     this.loading.set(true);
     const product: ProductParameterData[] = [
@@ -127,13 +132,12 @@ export class HomeComponent {
     // }, 5000);
     this.barcodeService.getProducts(product).subscribe({
       next: ({ products }) => {
-        console.log(products);
         this.barcodeService.setProductsData(products)
         this.loading.set(false);
       },
       error: (error) => {
         console.log(error);
-        this.barcodeService.setProductsData([])
+        this.barcodeService.setProductsData(null)
         this.loading.set(false);
       }
     })
@@ -146,7 +150,6 @@ export class HomeComponent {
   private productsDataObserver() {
     this.barcodeService.products$.subscribe({
       next: (products) => {
-        console.log(products);
         this.products.set(products)
       }
     })

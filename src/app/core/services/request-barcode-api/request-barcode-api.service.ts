@@ -17,10 +17,9 @@ export class RequestBarcodeApiService {
 
   private BARCODE_PRODUCTS_API_URL: string = `${this.CORS_ANYWARE_PROXY}${this.BARCODE_API_URL}/products`;
 
-  public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+  public products$: BehaviorSubject<Product[] | null> = new BehaviorSubject<Product[] | null>(null);
 
-  public setProductsData(data: Product[]) {
-    console.log(data);
+  public setProductsData(data: Product[] | null) {
     this.products$.next(data);
   }
 
