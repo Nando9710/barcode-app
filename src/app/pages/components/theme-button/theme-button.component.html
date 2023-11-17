@@ -1,0 +1,14 @@
+<div class="theme-button">
+  <div class="button-container">
+    @if (theme() === Theme.LIGHT) {
+      <button mat-icon-button color="accent" (click)="setTheme(Theme.DARK)">
+        <mat-icon>dark_mode</mat-icon>
+      </button>
+    }
+    @if (theme() === Theme.DARK) {
+      <button mat-icon-button color="accent" (click)="setTheme(Theme.LIGHT)">
+        <mat-icon>light_mode</mat-icon>
+      </button>
+    }
+  </div>
+</div>
