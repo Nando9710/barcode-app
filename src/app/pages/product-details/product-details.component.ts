@@ -52,7 +52,6 @@ export class ProductDetailsComponent {
       next: ({ productData }) => {
         if (productData) {
           this.productData.set(JSON.parse(productData))
-          console.log(this.productData());
         }
       }
     })
