@@ -1,12 +1,13 @@
 <section>
   <div class="details-container">
     <div class="image-container">
-     <swiper [config]='config' #swiper>
-        <ng-template swiperSlide *ngFor='let image of productData()?.images'>
-          <img [src]="image" alt="image-carousel">
-        </ng-template>
-      </swiper>
-
+     <mat-card>
+       <swiper [config]='config' #swiper>
+         <ng-template swiperSlide *ngFor='let image of productData()?.images'>
+           <img [src]="image" alt="image-carousel">
+         </ng-template>
+       </swiper>
+     </mat-card>
     </div>
 
     <div class="data-container">

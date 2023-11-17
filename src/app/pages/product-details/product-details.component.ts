@@ -8,6 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule, NgFor, NgOptimizedImage } from '@angular/common';
 import { SwiperComponent, SwiperModule } from 'swiper/angular';
 import SwiperCore, { Lazy, Navigation, SwiperOptions } from 'swiper';
+import { MatCardModule } from '@angular/material/card';
 
 
 SwiperCore.use([Navigation, Lazy]);
@@ -23,6 +24,7 @@ SwiperCore.use([Navigation, Lazy]);
     MatButtonModule,
     MatChipsModule,
     MatDividerModule,
+    MatCardModule,
     NgOptimizedImage
   ],
   templateUrl: './product-details.component.html',
