@@ -1,0 +1,18 @@
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .banner-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      height: 70px;
+      padding: 0.5rem 0 0.5rem 0;
+      cursor: pointer;
+    }
+  }
+}

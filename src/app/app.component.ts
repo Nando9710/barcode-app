@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ThemeButtonComponent } from './components/theme-button/theme-button.component';
+import { BannerComponent } from './components/banner/banner.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ThemeButtonComponent],
+  imports: [RouterOutlet, BannerComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
