@@ -38,6 +38,9 @@ dependencies:
   ngx-skeleton-loader:
     specifier: ^8.1.0
     version: 8.1.0(@angular/common@17.0.2)(@angular/core@17.0.2)
+  ngx-toastr:
+    specifier: 17.0.2
+    version: 17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2)
   rxjs:
     specifier: ~7.8.0
     version: 7.8.1
@@ -6166,6 +6169,19 @@ packages:
     dependencies:
       '@angular/common': 17.0.2(@angular/core@17.0.2)(rxjs@7.8.1)
       '@angular/core': 17.0.2(rxjs@7.8.1)(zone.js@0.14.2)
+      tslib: 2.6.2
+    dev: false
+
+  /ngx-toastr@17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2):
+    resolution: {integrity: sha512-KehiPx6bkbiUyJbabf0ZA04+ASumS8r/y4wPsUOMI9OrBvBcfq27UQmWuQKoVR8E+9y4Pq7eZkSg2kvxNvpxTA==}
+    peerDependencies:
+      '@angular/common': '>=16.0.0-0'
+      '@angular/core': '>=16.0.0-0'
+      '@angular/platform-browser': '>=16.0.0-0'
+    dependencies:
+      '@angular/common': 17.0.2(@angular/core@17.0.2)(rxjs@7.8.1)
+      '@angular/core': 17.0.2(rxjs@7.8.1)(zone.js@0.14.2)
+      '@angular/platform-browser': 17.0.2(@angular/animations@17.0.2)(@angular/common@17.0.2)(@angular/core@17.0.2)
       tslib: 2.6.2
     dev: false
 
