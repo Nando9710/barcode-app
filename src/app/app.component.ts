@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ThemeButtonComponent } from './pages/components/theme-button/theme-button.component';
+import { ThemeButtonComponent } from './components/theme-button/theme-button.component';
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -1,8 +1,8 @@
 import { Component, WritableSignal, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ThemeService } from '../../../core/services/theme/theme.service';
-import { Theme } from '../../../core/enums/theme.enum';
+import { ThemeService } from '../../core/services/theme/theme.service';
+import { Theme } from '../../core/enums/theme.enum';
 
 @Component({
   selector: 'app-theme-button',
