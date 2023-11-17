@@ -9,6 +9,14 @@ section {
   .products {
     width: 80%;
 
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+
     .products-container {
       display: flex;
       flex-direction: column;

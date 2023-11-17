@@ -1,5 +1,7 @@
 <mat-card>
-  <img class="product-image" mat-card-image [src]="productData()?.images?.[0]" alt="product-image">
+  <div class="product-image">
+    <img class="" mat-card-image [src]="productData()?.images?.[0]" alt="product-image">
+  </div>
   <mat-card-content>
     <div class="product-description">
       <h3 class="clamp-1">{{ productData()?.title }}</h3>
@@ -26,7 +28,6 @@
       @if (productData()?.brand) {<p> <strong>Marca</strong>: {{ productData()?.brand }} </p>}
       @if (productData()?.manufacturer) {<p> <strong>Fabricante</strong>: {{ productData()?.manufacturer }} </p>}
       @if (productData()?.model) {<p> <strong>Modelo</strong>: {{ productData()?.model }} </p>}
-      @if (productData()?.mpn) {<p> <strong>MPN</strong>: {{ productData()?.mpn }} </p>}
       @if (productData()?.weight) {<p> <strong>Peso</strong>: {{ productData()?.weight }} </p>}
       @if (productData()?.color) {<p> <strong>Color</strong>: {{ productData()?.color }} </p>}
       @if (productData()?.size) {<p> <strong>Tamaño</strong>: {{ productData()?.size }} </p>}

@@ -5,17 +5,44 @@ mat-card {
   flex-direction: row;
   cursor: pointer;
 
-  img.product-image {
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+
+  .product-image {
     width: 25%;
     height: 260px;
-    object-fit: cover;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
+
 
   mat-card-content {
     width: 80%;
     display: flex;
     justify-content: start;
     gap: 1rem;
+    padding-bottom: 0;
+
+    @media (max-width: 992px) {
+      padding: 0.5rem;
+      padding-bottom: 0;
+      gap: 0.2rem;
+    }
+
+    @media (max-width: 767px) {
+      padding: 0;
+      width: 100%;
+    }
+
 
     .product-description {
       width: 60%;
@@ -23,10 +50,37 @@ mat-card {
       flex-direction: column;
       justify-content: space-between;
 
+      @media (max-width: 767px) {
+        width: 100%;
+        padding: 0.5rem;
+      }
+
+      h3 {
+        @media (max-width: 992px) {
+          margin: 0;
+          margin-top: 0.5rem;
+        }
+      }
+
+      p {
+        @media (max-width: 992px) {
+          margin: 0;
+        }
+
+        @media (max-width: 767px) {
+          display: none;
+        }
+      }
+
       .description-footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media (max-width: 767px) {
+          flex-direction: row-reverse;
+          min-height: 3rem;
+        }
 
         .prices {
           width: 35%;
@@ -45,16 +99,30 @@ mat-card {
             font-size: 20px;
             text-decoration: line-through;
             color: $warn-color;
+
+            @media (max-width: 992px) {
+              font-size: 16px;
+            }
           }
 
           h3 {
             font-size: 25px;
+
+            @media (max-width: 992px) {
+              font-size: 18px;
+            }
           }
         }
 
         img {
           cursor: pointer;
         }
+      }
+    }
+
+    mat-divider {
+      @media (max-width: 767px) {
+        display: none;
       }
     }
 
@@ -67,6 +135,14 @@ mat-card {
       gap: 1rem;
       max-height: 250px;
       padding: 1rem;
+
+      @media (max-width: 992px) {
+        padding: 0.5rem;
+      }
+
+      @media (max-width: 767px) {
+        display: none;
+      }
 
       p {
         margin: 0;
