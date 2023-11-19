@@ -3,6 +3,8 @@ FROM bitnami/node:18 AS build
 
 ARG RAILWAY_ENVIRONMENT
 
+RUN echo $RAILWAY_SERVICE_NAME
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
