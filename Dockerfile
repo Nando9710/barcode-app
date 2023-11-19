@@ -1,9 +1,11 @@
 # Stage 1: Build
 FROM bitnami/node:18 AS build
 
-ARG RAILWAY_DOCKERFILE_PATH
+ARG barcode-app
 
-RUN echo $RAILWAY_DOCKERFILE_PATH
+RUN echo $barcode-app
+
+ARG RAILWAY_DOCKERFILE_PATH
 
 WORKDIR /usr/src/app
 
