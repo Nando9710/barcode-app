@@ -7,6 +7,8 @@ RUN echo $barcode-app
 
 ARG RAILWAY_DOCKERFILE_PATH
 
+RUN echo $RAILWAY_DOCKERFILE_PATH
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
