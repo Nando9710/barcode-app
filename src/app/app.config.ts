@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     importProvidersFrom(HttpClientModule),
     importProvidersFrom(NgxSkeletonLoaderModule.forRoot({ animation: 'pulse' })),
-    importProvidersFrom(ToastrModule.forRoot()),
+    importProvidersFrom(ToastrModule.forRoot({ positionClass: 'toast-bottom-right' })),
     provideAnimations(),
     RequestBarcodeApiService
   ]

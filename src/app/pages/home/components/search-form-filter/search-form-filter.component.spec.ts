@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchFormFilterComponent } from './search-form-filter.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SearchFormFilterComponent', () => {
   let component: SearchFormFilterComponent;
@@ -8,10 +9,10 @@ describe('SearchFormFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchFormFilterComponent]
+      imports: [SearchFormFilterComponent, BrowserAnimationsModule]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(SearchFormFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
