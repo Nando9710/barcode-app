@@ -11,17 +11,11 @@ import { ProductParameterData } from '../../interfaces/product.interface';
 export class RequestBarcodeApiService {
   constructor(private http: HttpClient) { }
 
-  private BARCODE_API_URL: string = environment.barcodeApiUrl;
-  private CORS_ANYWARE_PROXY = environment.corsAnyWhere;
+  public BARCODE_API_URL: string = environment.barcodeApiUrl;
+  public CORS_ANYWARE_PROXY = environment.corsAnyWhere;
   private API_KEY: string = environment.apiKey;
 
-  private BARCODE_PRODUCTS_API_URL: string = `${this.CORS_ANYWARE_PROXY}${this.BARCODE_API_URL}/products`;
-
-  public products$: BehaviorSubject<Product[] | null> = new BehaviorSubject<Product[] | null>(null);
-
-  public setProductsData(data: Product[] | null) {
-    this.products$.next(data);
-  }
+  public BARCODE_PRODUCTS_API_URL: string = `${this.CORS_ANYWARE_PROXY}${this.BARCODE_API_URL}/products`;
 
   public getProducts(productQuery?: ProductParameterData[]): Observable<BarcodeProductsData> {
     let params = new HttpParams();

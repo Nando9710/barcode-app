@@ -6,6 +6,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { SearchFormFilterComponent } from './components/search-form-filter/search-form-filter.component';
 import { filterOptions, searchOptions } from './utils/consts/options.const';
 import { ShowToastrService } from '../../core/services/show-toastr.service';
+import { ProductsService } from 'src/app/core/services/products/products.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ import { ShowToastrService } from '../../core/services/show-toastr.service';
 export class HomeComponent {
   constructor(
     private barcodeService: RequestBarcodeApiService,
+    private productsService: ProductsService,
     private toastr: ShowToastrService
   ) { }
 
@@ -34,12 +36,12 @@ export class HomeComponent {
 
     this.barcodeService.getProducts(product).subscribe({
       next: ({ products }) => {
-        this.barcodeService.setProductsData(products)
+        this.productsService.setProductsData(products)
         this.loading.set(false);
       },
       error: (error) => {
         console.log(error);
-        this.barcodeService.setProductsData(null)
+        this.productsService.setProductsData(null)
         this.toastr.showError('Ha ocurrido un error, inténtelo de nuevo', 'Error');
         this.loading.set(false);
       }
@@ -47,7 +49,7 @@ export class HomeComponent {
   }
 
   private productsDataObserver() {
-    this.barcodeService.products$.subscribe({
+    this.productsService.products$.subscribe({
       next: (products) => {
         this.products.set(products)
       }
