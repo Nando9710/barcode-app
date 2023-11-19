@@ -1,6 +1,8 @@
 # Stage 1: Build
 FROM bitnami/node:18 AS build
 
+ARG RAILWAY_ENVIRONMENT
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
