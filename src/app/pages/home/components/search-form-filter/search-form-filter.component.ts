@@ -86,7 +86,7 @@ export class SearchFormFilterComponent {
     this.menuTrigger.closeMenu()
   }
 
-  private prepareData() {
+  public prepareData(): ProductParameterData[] {
     const product: ProductParameterData[] = [
       {
         code: this.productForm.controls['code'].value,
@@ -98,10 +98,7 @@ export class SearchFormFilterComponent {
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.createProductForm();
     this.addFilterForm();
-
   }
 }
