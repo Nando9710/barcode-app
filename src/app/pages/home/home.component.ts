@@ -22,7 +22,7 @@ export class HomeComponent {
   constructor(
     private barcodeService: RequestBarcodeApiService,
     private productsService: ProductsService,
-    private toastr: ShowToastrService
+    private toastr: ShowToastrService,
   ) { }
 
   public loading: WritableSignal<boolean> = signal(false);
@@ -55,6 +55,8 @@ export class HomeComponent {
       }
     })
   }
+
+
 
   ngOnInit(): void {
     this.productsDataObserver();
