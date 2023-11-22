@@ -3,4 +3,4 @@
   [filterOptions]="filterOptions"
   (searchProduct)="searchProduct($event)" />
   
-<app-products [products]="products()" [loading]="loading()" />
+<app-products [products]="products()" [loading]="loading()" (chargeMoreProduct)="chargeMoreProducts()" />

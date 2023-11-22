@@ -161,7 +161,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges()
 
     expect(component.loading()).withContext('first value loading').toBe(false);
-    expect(component.products()).withContext('first value products').toBe(null);
+    expect(component.products()).withContext('first value products').toEqual([]);
   })
 
   it('should get products with searchProduct(product: ProductParameterData[])', () => {
@@ -191,7 +191,7 @@ describe('HomeComponent', () => {
     expect('RequestBarcodeApiService test failure')
       .withContext('should display error')
       .toMatch(/test failure/);
-    expect(component.products()).toEqual(null);
+    expect(component.products()).toEqual([]);
     expect(component.loading()).withContext('request has been done').toBe(false);
   }))
 });

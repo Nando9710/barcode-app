@@ -26,27 +26,38 @@ export class HomeComponent {
   ) { }
 
   public loading: WritableSignal<boolean> = signal(false);
-  public products: WritableSignal<Product[] | null> = signal(null)
+  public products: WritableSignal<Product[]> = signal([])
 
   public searchOptions: ProductOptionSearch[] = searchOptions;
   public filterOptions: ProductOptionSearch[] = filterOptions;
 
-  public searchProduct(product: ProductParameterData[]) {
-    this.loading.set(true);
+  public searchProduct(productQuery: ProductParameterData[], loadingMore = false) {
+    if (!loadingMore) {
+      this.loading.set(true);
+      this.products.set([]);
+      this.productsService.setPageToFirst()
+    };
 
-    this.barcodeService.getProducts(product).subscribe({
+    this.barcodeService.getProducts(productQuery, this.productsService.page).subscribe({
       next: ({ products }) => {
-        this.productsService.setProductsData(products)
+        this.productsService.setProductsData([...this.products(), ...products]);
         this.loading.set(false);
       },
       error: (error) => {
-        console.log(error);
-        this.productsService.setProductsData(null)
+        this.productsService.setProductsData([])
         this.toastr.showError('Ha ocurrido un error, inténtelo de nuevo', 'Error');
         this.loading.set(false);
       }
     })
   }
+
+  public chargeMoreProducts() {
+    const productQuery: ProductParameterData[] = this.barcodeService.productQueryCached;
+    this.productsService.incProductsPage();
+
+    if (this.productsService.page > 1) this.searchProduct(productQuery, true);
+  }
+
 
   private productsDataObserver() {
     this.productsService.products$.subscribe({
