@@ -49,7 +49,7 @@ export class SearchFormFilterComponent {
   @Output() searchProduct: EventEmitter<ProductParameterData[]> = new EventEmitter();
   @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
 
-  private createProductForm() {
+  public createProductForm() {
     this.productForm = this.fb.group({
       code: [OptionCode.TITLE],
       value: [''],
@@ -72,22 +72,19 @@ export class SearchFormFilterComponent {
   private filterTaxonomyData(formGroup: FormGroup) {
     this.filteredTaxonomyData = formGroup.controls['value'].valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value)),
+      map(value => this.filterIncludesTaxonomyData(value)),
     );
   }
 
 
-  private _filter(value: string): string[] {
+  public filterIncludesTaxonomyData(value: string): string[] {
     return this.taxonomyData().filter(option => option.toLowerCase().includes(value.toLowerCase()));
-  }
-
-  public selectCategory(value: string) {
-    this.searchProduct.emit(this.prepareData());
   }
 
   public getProductFiltersArray(): FormArray {
     return this.productForm.controls['filters'] as FormArray
   }
+
   public addFilterForm() {
     const productFilters = this.getProductFiltersArray();
     productFilters.push(
@@ -97,13 +94,17 @@ export class SearchFormFilterComponent {
       })
     )
 
+    this.suscribeToArrayformToFilterData()
+  }
+
+  public suscribeToArrayformToFilterData() {
     const lastIndexArrayFilters = this.getProductFiltersArray().controls.length - 1
-    const hola = this.getProductFiltersArray().controls[lastIndexArrayFilters].valueChanges.pipe().subscribe({
+    const filtersArraySubscriber$ = this.getProductFiltersArray().controls[lastIndexArrayFilters].valueChanges.subscribe({
       next: () => {
         const group = this.getProductFiltersArray().controls[lastIndexArrayFilters] as FormGroup
         if (group.controls['code'].value === OptionCode.CATEGORY) {
           this.filterTaxonomyData(group);
-          hola.unsubscribe();
+          filtersArraySubscriber$.unsubscribe();
         };
       }
     })
@@ -146,10 +147,8 @@ export class SearchFormFilterComponent {
     if (this.productTaxonomyService.productTaxonomyData$)
       this.productTaxonomyService.getGoogleProductTaxonomyData().subscribe({
         next: (data: string) => {
-          // Dividir el contenido en líneas y filtrarlas
           const lines = data.split('\n');
           lines.splice(0, 1)
-          // this.taxonomyData.set([...lines]);
           this.productTaxonomyService.setProductTaxonomyData([...lines]);
         },
         error: (error) => {
