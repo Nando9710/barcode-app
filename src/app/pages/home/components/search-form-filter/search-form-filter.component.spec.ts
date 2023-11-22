@@ -1,11 +1,12 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchFormFilterComponent } from './search-form-filter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OptionCode } from 'src/app/core/enums/option-code.enum';
-import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { first } from 'rxjs';
+import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ProductParameterData } from 'src/app/core/interfaces/product.interface';
+import { first } from 'rxjs';
 
 describe('SearchFormFilterComponent', () => {
   let component: SearchFormFilterComponent;
@@ -13,7 +14,8 @@ describe('SearchFormFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchFormFilterComponent, BrowserAnimationsModule, ReactiveFormsModule]
+      imports: [SearchFormFilterComponent, BrowserAnimationsModule, ReactiveFormsModule],
+      providers: [HttpClient, HttpHandler]
     })
       .compileComponents();
 
@@ -103,28 +105,49 @@ describe('SearchFormFilterComponent', () => {
     expect(component.prepareData()).toEqual(expectedValueData);
   })
 
-  // it('should raise selected event when type on value input form subscribeToFormChange()', () => {
-  //   component.ngOnInit()
-  //   let preparedDataTyped: ProductParameterData[] | undefined;
+  it('filterIncludesTaxonomyData(value: string) should return filtered array', () => {
+    component.taxonomyData.set(['Animals', 'Electronic']);
+    const filtered = component.filterIncludesTaxonomyData('elec');
+    expect(filtered).toEqual(['Electronic']);
+  })
 
-  //   const expectedPreparedData: ProductParameterData[] = [{
-  //     code: OptionCode.TITLE,
-  //     value: 'Apple',
-  //   }];
+  it('ahora lo pongo', () => {
+    component.createProductForm();
+    component.addFilterForm();
+    component.taxonomyData.set(['Animals', 'Electronic']);
 
-  //   fixture.detectChanges();
+    const group = component.getProductFiltersArray().controls[0] as FormGroup;
+    group.controls['code'].setValue(OptionCode.CATEGORY);
+    group.controls['value'].setValue('elec');
 
-  //   component.searchProduct.pipe(first()).subscribe((preparedData: ProductParameterData[]) => {
-  //     expect(preparedData).toEqual(expectedPreparedData);
+    fixture.whenStable().then(() => {
+      component.filteredTaxonomyData.subscribe(data => {
+        expect(data).toEqual(['Electronic']);
+      })
+    });
+  })
 
-  //   });
+  it('should raise selected event when type on value input form subscribeToFormChange()', () => {
+    component.ngOnInit()
+    let preparedDataTyped: ProductParameterData[] | undefined;
 
+    const expectedPreparedData: ProductParameterData[] = [{
+      code: OptionCode.TITLE,
+      value: 'Apple',
+    }];
 
-  //   component.productForm.controls['value'].setValue('Apple');
-  //   // fixture.detectChanges();
+    fixture.detectChanges();
 
-  //   // tick(600)
-  //   // expect(preparedDataTyped).toEqual(expectedPreparedData);
+    component.searchProduct.pipe(first()).subscribe((preparedData: ProductParameterData[]) => {
+      expect(preparedData).toEqual(expectedPreparedData);
 
-  // });    
+    });
+
+    component.productForm.controls['value'].setValue('Apple');
+
+    fixture.whenStable().then(() => {
+      expect(preparedDataTyped).toEqual(expectedPreparedData);
+    });
+
+  });
 });
