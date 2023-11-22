@@ -111,7 +111,7 @@ describe('SearchFormFilterComponent', () => {
     expect(filtered).toEqual(['Electronic']);
   })
 
-  it('ahora lo pongo', () => {
+  it('when "code" is CATEGORY taxonomyData is filtered (Observable)', () => {
     component.createProductForm();
     component.addFilterForm();
     component.taxonomyData.set(['Animals', 'Electronic']);
