@@ -1,4 +1,5 @@
 <section>
+  <!-- LIST OF PRODUCTS -->
   <div class="products">
     @if (!loadingProducts()) {
       @if (productsData()?.length || 0 > 0) {
@@ -16,11 +17,7 @@
       <ng-container [ngTemplateOutlet]="loading" ></ng-container>
     }
   </div>
-  <div class="more">
-    @if (!loadingProducts() && productsData()?.length || 0 > 0) {
-      <mat-spinner color="accent" diameter="50"></mat-spinner>
-    }
-  </div>
+  <div class="more"></div>
 </section>
 
 <ng-template #loading>

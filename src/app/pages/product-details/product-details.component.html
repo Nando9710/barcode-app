@@ -1,5 +1,6 @@
 <section>
   <div class="details-container">
+    <!-- IMAGE-CAROUSEL -->
     <div class="image-container">
      <mat-card>
        <swiper [config]='config' #swiper>
@@ -10,6 +11,7 @@
      </mat-card>
     </div>
 
+    <!-- IMAGE DATA INFO -->
     <div class="data-container">
       <h2>{{productData()?.title}}</h2>
       @if (productData()?.category) { <small>{{ productData()?.category }}</small>}
@@ -29,6 +31,7 @@
         }
       </div>
 
+      <!-- INFO DETAILS -->
       @if (productData()?.brand) {<p> <strong>Marca</strong>: {{ productData()?.brand }} </p>}
       @if (productData()?.manufacturer) {<p> <strong>Fabricante</strong>: {{ productData()?.manufacturer }} </p>}
       @if (productData()?.model) {<p> <strong>Modelo</strong>: {{ productData()?.model }} </p>}
@@ -56,6 +59,7 @@
         <p> {{ productData()?.features }} </p>
       }
       
+      <!-- STORES -->
       @if (productData()?.stores && !(productData()?.stores?.length === 0)) {
         <h2>Dónde encontrarlo:</h2>
         @for (store of productData()?.stores; track $index) {

@@ -1,4 +1,5 @@
 <form [formGroup]="productForm">
+  <!-- MAIN SEARCH -->
   <mat-form-field class="select" color="accent">
     <mat-label>Buscar Por...</mat-label>
     <mat-select formControlName="code">
@@ -13,6 +14,7 @@
     <input matInput type="text" formControlName="value" >
   </mat-form-field>
 
+  <!-- FILTERS -->
   <button mat-icon-button color="accent" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
     <mat-icon>filter_list</mat-icon>
   </button>
@@ -36,6 +38,7 @@
               </mat-select>
             </mat-form-field>
 
+            <!-- IF OPTIONVALUE IS CATEGORY SHOW AUTOCOMPLETE TAXONOMYDATA -->
             @if (optionValue.value === OptionCode.CATEGORY) {
               <mat-form-field class="search" color="accent">
                 <mat-label>Escriba la categoría</mat-label>

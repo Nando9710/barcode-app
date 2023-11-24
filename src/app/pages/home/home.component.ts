@@ -32,6 +32,7 @@ export class HomeComponent {
   public filterOptions: ProductOptionSearch[] = filterOptions;
 
   public searchProduct(productQuery: ProductParameterData[], loadingMore = false) {
+    // if is the first request from user searching
     if (!loadingMore) {
       this.loading.set(true);
       this.products.set([]);
@@ -70,6 +71,7 @@ export class HomeComponent {
 
 
   ngOnInit(): void {
+    // subscribe to products value
     this.productsDataObserver();
   }
 }

@@ -4,14 +4,12 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 import { Router } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [
     NgxSkeletonLoaderModule,
-    MatProgressSpinnerModule,
     ProductCardComponent,
     NgTemplateOutlet
   ],
@@ -51,6 +49,7 @@ export class ProductsComponent {
   }
 
   private observeSroll() {
+    // observe the bottom to load data and make an infinite scroll
     const intersectionObserver: IntersectionObserver = new IntersectionObserver(entries => {
       if (entries[0].intersectionRatio <= 0) return;
       this.chargeMoreProduct.emit(null)

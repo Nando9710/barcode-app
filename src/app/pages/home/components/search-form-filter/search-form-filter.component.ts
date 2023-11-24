@@ -70,6 +70,7 @@ export class SearchFormFilterComponent {
   }
 
   private filterTaxonomyData(formGroup: FormGroup) {
+    // filter taxonomy data for autocomplete
     this.filteredTaxonomyData = formGroup.controls['value'].valueChanges.pipe(
       startWith(''),
       map(value => this.filterIncludesTaxonomyData(value)),
@@ -125,6 +126,7 @@ export class SearchFormFilterComponent {
   }
 
   public prepareData(): ProductParameterData[] {
+    // prepare all parameters to search
     const product: ProductParameterData[] = [
       {
         code: this.productForm.controls['code'].value,
@@ -137,6 +139,7 @@ export class SearchFormFilterComponent {
 
   public productTaxonomyData!: string[]
   private setTaxonomyData() {
+    // set the google product taxonomy
     this.productTaxonomyService.productTaxonomyData$.subscribe((data) => {
       if (data) this.taxonomyData.set(data)
       if (!data) this.getTaxonomyData();
@@ -147,6 +150,7 @@ export class SearchFormFilterComponent {
     if (this.productTaxonomyService.productTaxonomyData$)
       this.productTaxonomyService.getGoogleProductTaxonomyData().subscribe({
         next: (data: string) => {
+          // remove first line because it is not a category 
           const lines = data.split('\n');
           lines.splice(0, 1)
           this.productTaxonomyService.setProductTaxonomyData([...lines]);
