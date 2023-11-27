@@ -2,7 +2,7 @@
 
 ## Run app locally with cli
 
-Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`.
+Checkout to branch `master`. Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Run app with docker image
 
